@@ -1,0 +1,470 @@
+:root{
+  --red-500: hsl(356, 100%, 66%);
+  --gray-600: hsl(207, 13%, 34%);
+  --gray-900: hsl(240, 10%, 16%);
+  --blue-900: hsl(208, 49%, 24%);
+
+  --purple-950: hsl(237, 17%, 21%);
+  --purple-900: hsl(237, 23%, 31%);
+
+  --white: #fff;
+  --radius-xl: 120px; /*radio para todos los quie necesite*/
+  --container: 1100px;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; font-family:system-ui, Arial, sans-serif; }
+a{ text-decoration:none; color:inherit; } /*toods los enlaces sin rayas y con el mismo color del texto donde este metido para que se vea bien */
+
+/* ===== HEADER BG ===== */
+.header{
+  background:
+    url("./images/bg-pattern-intro-desktop.svg"), /*es muy importante que primero se ponga la imagen y despues los colores de fomdo par que no tape la imagen*/
+    linear-gradient(135deg,#ff8f70,#ff3d54);
+  background-repeat:no-repeat; /*evitamos que se repita la iamgen es necesari ponerlo siempre*/
+  background-size: 200%, cover; /*el cover se usa para que se cubra todo el espacio con color*/
+  background-position: -20% 60%, center; /*mueve imagenes que esten de fondo y el center es para dentrar un color mas no la iamgen */
+  border-bottom-left-radius: var(--radius-xl); /*radios predeterminados*/
+  color: var(--white); /*color de la letra*/
+}
+
+/* ===== NAV DESKTOP ===== */
+.menu{
+  display:flex; /*pone todos los elemntos uno al lado del otro*/
+  align-items:center; /*hace que todo el contenido del menu quede en una sola fila alineado*/
+  gap: 22px; /*separacion de cada elemento*/
+  padding: 32px 48px; /*margenes internos, arriba y a los lados*/
+  position: relative; /*sirve de referencia para poner absolute en algun momento*/
+}
+
+.logo{
+  font-size: 2.6rem; /*rem significa “tamaño basado en el tamaño base del texto de la página”.
+Si el base es 16px, 2.6rem ≈ 41.6px.*/
+  font-weight: 700; /*engruesa la letra*/
+}
+
+.nav_panel{
+  display:flex; /*pone todo en filita*/
+  align-items:center; 
+  gap: 22px;
+  width: 100%; /*ocupa todo el espacio disnible que le otorgamos desde .menu*/
+}
+
+.nav_links{
+  display:flex; /*para que todo se deje organizar en una fila los 3 nombres visibles*/
+  align-items:center;
+  gap: 18px;
+}
+
+.menu_desplegable{ position: relative; } /*convertimos al menu desplegable en un punto de referencia*/
+
+.menu_desplegable summary{  
+  list-style:none;/*quita las flechitas*/
+  cursor:pointer; /*cuando pasa por encima de estas opciones cambia a manita*/
+  font-weight:600; /*mejora la forma del boton le da estilo*/
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+.menu_desplegable summary::marker{ content:""; } /*ayud a eliminar marcas en los botones*/
+
+.dropdown{ /*menu despplegable*/
+  position:absolute; /*esto lo que hace es conventirlo en una ventana o recuadro que solo flota y no estorba*/
+  top: 48px; /*cuando se despliegue que quede abajo y no tape nada*/
+  left: 0; 
+  background: white; /*ventana de color blanca*/
+  border-radius: 12px; 
+  padding: 16px 18px; /*espacios internos*/
+  min-width: 180px; /*el minimo*/
+  box-shadow: 0 20px 40px rgba(0,0,0,.18); /*sombras*/
+}
+.dropdown li{ list-style:none; } /*quita los punticos de las listas*/
+.dropdown a{  /*en general esta para que sea mas facil clikear*/
+  display:block; /* hace que el boton ocupe mas espacio*/
+  color: var(--gray-900);
+  padding: 7px 0;
+  font-size: .95rem; /*tamaño de letras adaptable*/
+}
+.dropdown a:hover{ font-weight:700; } /*hace que se pomnga mas negro la opcion el 700 es el tmaño del color*/
+
+.menu_actions{ 
+  margin-left:auto; /*empuja a los 2 botomes  la derecha*/
+  display:flex; /*los pone en lista*/
+  align-items:center; 
+  gap: 18px;
+}
+
+.login_btn{ /*estilo del boton del login*/
+  font-weight:600;
+  padding: 8px 10px;
+}
+
+.signup_btn{ /*le da mas estilo al boton del signup*/
+  background:white; 
+  color: var(--red-500); 
+  padding: 10px 26px;
+  border-radius: 100px;
+  font-weight: 700; /*le da grosor al texto*/
+}
+
+/* ===== HERO ===== */
+.hero{
+  text-align:center; /*centra todos los espacios*/
+  padding: 60px 24px 90px; /*espacios internos, arriba, lados y abajo*/
+}
+.hero_container{
+  max-width: 900px; /*evitamos que el hero sea muy anchi en panrallas mas grandes*/
+  margin: 0 auto; /*lo centra horizontalmente*/
+}
+.hero_title{
+  font-size: clamp(2.2rem, 5vw, 3.6rem); /*el tamaño se adapta el dependiendo de la pnatalla va de menor a mayor segun se ve escrito vw es segun el tamaño de portada*/ 
+  line-height: 1.1; /*junta un poco las lienas del titulo*/
+  font-weight: 700;
+}
+.hero_text{
+  margin-top: 14px; /*margun superiro*/
+  opacity: .9; /*ligeramente trasparente*/
+  font-size: 1.05rem;/*un poco mas grande*/
+}
+.hero_action{
+  margin-top: 34px;
+  display:flex;
+  justify-content:center;
+  gap: 16px;
+  flex-wrap: wrap; /*si no caben en una sola linea*/
+}
+.btn_primary{ 
+  background:white;
+  color: var(--red-500);
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-weight: 700;
+  border: 1px solid white; 
+}
+.btn_outline{
+  border: 1px solid white;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-weight: 700;
+}
+
+/* ===== SECTION 1 ===== */
+.cuerpo{
+  padding: 120px 48px; 
+  overflow:hidden; 
+}
+.body_title{ /*espacio del titulo*/
+  text-align:center;
+  margin-bottom: 60px; /*separa el titulo del contenido de abajo*/
+  color: var(--blue-900); 
+  font-size: 2rem;
+}
+.body_grid{ /*contenido derecho*/
+  max-width: var(--container); /*no seas mas ancho que la variable del conteiner*/
+  margin: 0 auto; /*arriba no hay margenes arriba ni abajo y automatico a los lados */
+  display:grid; /*creamos 2 columnas con grid*/
+  grid-template-columns: 1fr 1fr;
+  align-items:center; 
+  gap: 80px;
+}
+.body_left{
+  display:flex; /*dentro de una de las columnas hacemos dos ileras */
+  flex-direction:column; /*y aqui decimos que se pomga uno debajo del otro*/
+  gap: 48px; /*espacio*/
+}
+.body_block h3{ /*titulo como se ve*/
+  color: var(--blue-900);
+  font-size: 1.5rem;
+  margin-bottom: 14px;
+}
+.body_block p{
+  color: var(--gray-600);  /*aqui se afecta directamente el texto*/
+  line-height: 1.7;
+  max-width: 58ch;
+}
+.body_right img{ 
+  width: 120%; /*espacio que ocupa la imagen*/
+  max-width: 720px; 
+  transform: translate(120px, -60px); /*posisionar a amno*/
+}
+
+/* ===== SECTION 2 (PURPLE FULL WIDTH) ===== */
+.body2{ padding: 160px 0 120px; }
+
+.body2_wrap{
+  width: 100%; /*ocupa toda la pantalla*/
+  height: 280px;
+  background:
+    url("./images/bg-pattern-circles.svg"),
+    linear-gradient(135deg, var(--purple-950), var(--purple-900));
+  background-repeat:no-repeat, no-repeat;
+  background-size: 600px, cover;
+  background-position: -150px -400px, center;
+  border-radius: 0 var(--radius-xl) 0 var(--radius-xl); /*radio predeterminado*/
+  color: white;
+  position: relative;
+  overflow: visible;
+}
+
+.body2_inner{
+  max-width: var(--container); /*medidas predeterminadas de ancho maximo*/
+  margin: 0 auto; 
+  height: 100%; /*hace que ocupe toda la altura del contenedor padre */
+  display: grid; 
+  grid-template-columns: 520px 1fr; /*poner el lado de la imagen con un espacio determinado para que no me rompa el codigo*/
+  align-items: center; 
+  gap: 60px;
+  padding: 0 24px;
+}
+
+.body2_media{ position: relative; height: 100%; } /*para que podamos poner el absolute en el phone y ledamos permiso de que ocupe todo el espacio del padre*/
+
+.phone{
+  position: absolute; /* me permite ponerlo flotando y que no estorbe y se puedeover con left/top*/
+  left: -20px; /*lo mueves hacia la izquierda*/
+  top: 50%; /*jusro  a la mitad del contenedor*/
+  transform: translateY(-50%);/*que tanto puede subir la imagen*/
+  width: 520px;  /*le decimos que use todo el esapcio fijado*/
+  height: auto; /*la altura se calcula sola*/
+}
+
+.body2_content{ max-width: 52ch; } /*retenemos el largo de las lineas solo usando 52 letras*/
+.body2_content h2{ font-size: 2rem; margin-bottom: 14px; } /*tamaño de la letra y margen por debajo para crear separacion*/
+.body2_content p{ line-height: 1.7; opacity: .85; }  /*espacio entre lienas y opacity le da mas suavidad al texto*/
+
+/* ===== SECTION 3 ===== */
+.body3{
+  padding: 120px 0 80px; /*medidas internas de todo el cuadro*/
+  overflow:hidden;
+}
+.body3_inner{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  align-items: center;
+  gap: 80px;
+}
+.laptop{
+  width: 130%; /*la imagen es mas larga que la columna*/
+  max-width: 760px; /*limitar la imagen*/
+  transform: translateX(-180px); /*,a empuja a la izquierda*/
+}
+.body3_content{
+  display:flex; /*ya tenemos 2 columnas ahora seria bueno 2 filas*/
+  flex-direction:column; /*la ponemos en forma de columna*/
+  gap: 48px; 
+}
+.body3_block h2{
+  color: var(--blue-900);
+  font-size: 1.7rem;
+  margin-bottom: 14px;
+}
+.body3_block p{
+  color: var(--gray-600);
+  line-height: 1.7;
+  max-width: 60ch; /*60 palabras max*/
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  background: var(--gray-900);
+  color: white;
+  padding: 90px 0;
+  border-top-right-radius: var(--radius-xl);
+}
+.footer_inner{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  gap: 80px;
+}
+.footer_logo{
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+.footer_col h3{ font-size: 1rem; margin-bottom: 16px; }
+.footer_col a{
+  display:block;
+  color: rgba(255,255,255,.7);
+  margin: 8px 0;
+}
+
+/* =================================================
+   RESPONSIVE
+================================================= */
+
+/* <= 1024 */
+@media (max-width: 1024px){
+  .menu{ padding: 28px 24px; }
+  .cuerpo{ padding: 110px 24px; }
+  .body3_inner{ padding: 0 24px; }
+  .footer_inner{ padding: 0 24px; }
+
+  .body_right img{ transform: translate(80px, -50px); width: 115%; }
+  .laptop{ transform: translateX(-140px); width: 120%; }
+}
+
+/* ===== HAMBURGUESA SIMPLE (MOBILE) ===== */
+.nav-toggle{ display:none; } /*mientras estemis en deskop se oculta el menu hamburgueesa asi */
+.overlay{ display:none; }
+.hamburger{ display:none; }
+
+@media (max-width: 768px){
+
+  /* header bg mobile */
+  .header{
+    background: /*reduciremos medidas en las fotos para que se adapte*/
+      url("./images/bg-pattern-intro-mobile.svg"),
+      linear-gradient(135deg,#ff8f70,#ff3d54);
+    background-repeat:no-repeat;
+    background-size: 160%, cover;
+    background-position: 35% 20%, center;
+  }
+
+  /* nav fila */
+  .menu{ 
+    flex-direction: row; /*logo a un lago menu desplegable al otro*/
+    align-items: center;
+    padding: 22px 18px;
+  }
+
+  /* oculto panel inline */
+  .nav_panel{
+    display:none; /*ocultamos el menu*/
+  }
+
+  /* muestro hamburguesa */
+  .hamburger{ /*mostramos la hamburguesa*/
+    display:block; /*se comporta como bloque para dar dimensiones y reservar*/
+    margin-left:auto; 
+    width: 44px;
+    height: 44px;
+    cursor:pointer;
+    position: relative;
+    z-index: 20; /*aseguramos que quede encima de todaas las capas*/
+  }
+  .hamburger span{ /*esto convierte cada span en bloqUe Y LOS ENCASILLa para formar una hamburguesa*/
+    display:block;
+    width: 26px;
+    height: 2px;
+    background:#fff;
+    margin: 6px 0;
+  }
+
+  /* overlay (cerrar tocando fuera) */
+  .nav-toggle:checked ~ .overlay{
+    display:block;
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    z-index: 5;
+  }
+
+  /* panel blanco */
+  .nav-toggle:checked ~ .nav_panel{
+    display:block;
+    position:absolute;
+    top: 90px;
+    left: 18px;
+    right: 18px;
+    background:#fff;
+    color: var(--gray-900);
+    border-radius:14px;
+    padding:18px;
+    z-index: 10;
+    box-shadow: 0 20px 50px rgba(0,0,0,.25);
+  }
+
+  .nav_links{
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* dropdown sin absolute (para que NO salte) */
+  .dropdown{
+    position: static;
+    box-shadow: none;
+    background: transparent;
+    padding: 8px 0 14px;
+    min-width: unset;
+  }
+
+  .menu_desplegable summary{
+    text-align:center;
+    padding: 14px 10px;
+  }
+
+  .dropdown a{
+    color: var(--gray-600);
+    text-align:center;
+  }
+
+  .line{
+    display:block;
+    height:1px;
+    background: rgba(0,0,0,.15);
+    margin: 12px 0;
+  }
+
+  .menu_actions{
+    margin-left: 0;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .login_btn{
+    text-align:center;
+    padding: 12px 0;
+    color: var(--gray-900);
+  }
+
+  .signup_btn{
+    text-align:center;
+    padding: 12px 0;
+    border-radius: 100px;
+    color: white;
+    background: linear-gradient(135deg,#ff8f70,#ff3d54);
+  }
+
+  /* hero buttons */
+  .hero{ padding: 54px 18px 80px; }
+  .hero_action{ flex-direction: column; align-items: center; }
+  .btn_primary, .btn_outline{ width: min(320px, 90%); text-align:center; }
+
+  /* section 1 */
+  .cuerpo{ padding: 90px 18px; }
+  .body_grid{ grid-template-columns: 1fr; gap: 24px; }
+  .body_right{ order: -1; }
+  .body_right img{ width: 100%; transform: none; display:block; margin: 0 auto 18px; }
+
+  /* purple section */
+  .body2{ padding: 120px 0 90px; }
+  .body2_wrap{ height:auto; padding: 80px 0 40px; text-align:center; }
+  .body2_inner{ grid-template-columns: 1fr; gap: 22px; }
+  .body2_media{ height: 260px; }
+  .phone{
+    position: static;
+    transform: none;
+    width: min(420px, 90%);
+    margin-top: -140px;
+  }
+  .body2_content{ margin: 0 auto; }
+
+  /* section 3 */
+  .body3{ padding: 90px 0 60px; }
+  .body3_inner{ grid-template-columns: 1fr; gap: 24px; padding: 0 18px; }
+  .laptop{ width: 100%; transform: none; display:block; margin: 0 auto 10px; }
+
+  /* footer */
+  .footer{ padding: 70px 0; }
+  .footer_inner{ grid-template-columns: 1fr; gap: 34px; text-align:center; padding: 0 18px; }
+}
+
+/* <= 480 */
+@media (max-width: 480px){
+  .hero_title{ font-size: 2.05rem; }
+  .body2_content h2{ font-size: 1.6rem; }
+}

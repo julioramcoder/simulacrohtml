@@ -1,0 +1,147 @@
+1) Cómo sé “qué tanto debo ponerle”
+
+No se adivina. Se decide con esta regla:
+
+Paso A: Encoge la pantalla y mira qué se rompe
+
+Hay 4 cosas que normalmente se rompen:
+
+se sale horizontalmente (aparece scroll a los lados)
+
+queda apretado (texto muy largo o todo pegado)
+
+se monta (elementos se pisan)
+
+se ve raro el orden (imagen debería ir arriba, pero queda abajo)
+
+Paso B: Elige el tipo de arreglo según el problema
+
+Se sale → reduce ancho, quita translate, usa overflow:hidden, o cambia a 1 columna.
+
+Está apretado → reduce padding, reduce gap, limita texto con max-width.
+
+Se monta → cambia layout (grid→columna), o usa flex-wrap, o quita absolute.
+
+Orden raro → usa order o cambia estructura a columna.
+
+Paso C: Ajusta “lo mínimo necesario”
+
+Responsive no es “cambiar todo”. Es cambiar lo justo para que se vea bien.
+
+2) Dónde ponerlo (qué se cambia en cada tamaño)
+
+Piensa en tres tamaños, y listo:
+
+Desktop (normal): tu CSS base.
+
+Tablet (≈ 1024): reduce espacios, suaviza transforms.
+
+Mobile (≈ 768 o 480): cambia estructuras grandes a 1 columna.
+
+Eso es exactamente lo que hace tu código.
+
+3) ¿Qué son esas “combinaciones raras”?
+A) @media (max-width: 768px)
+
+Significa:
+
+“cuando la pantalla sea 768px o menos, aplica estas reglas”.
+
+No es obligatorio 768. Es un “punto” común.
+
+B) El símbolo :checked ~ .nav_panel
+
+Esto es lo más importante del menú móvil:
+
+:checked = “cuando el checkbox está activado”
+
+~ = “busca el elemento que está después en el HTML”
+
+Entonces:
+
+“si el checkbox está activado, muestra el menú”.
+
+Si lo hicieras de otra forma, necesitarías JavaScript. Aquí lo hacen solo con CSS.
+
+C) Cosas como width: min(320px, 90%)
+
+Esto significa:
+
+“usa el menor entre 320px y 90%”.
+
+Sirve para que:
+
+en móvil no se pase de 320 (se ve pro)
+
+pero si el teléfono es muy pequeño, usa 90% para que no se salga
+
+4) Por qué cambias cosas específicas (y qué pasa si no)
+
+Te dejo las más comunes de tu código:
+
+1) grid-template-columns: 1fr;
+
+Por qué: en móvil dos columnas quedan apretadas.
+Qué pasa si no: texto e imagen quedan mini o se pisan.
+
+2) Quitar transforms en móvil (transform: none)
+
+Por qué: esos movimientos (translate) están hechos para pantallas grandes.
+Qué pasa si no: la imagen se puede salir, cortar o crear scroll lateral.
+
+3) flex-direction: column
+
+Por qué: en móvil quieres apilar, no poner todo en fila.
+Qué pasa si no: botones o links se aplastan y quedan incómodos.
+
+4) flex-wrap: wrap
+
+Por qué: si no caben en una línea, que bajen.
+Qué pasa si no: se salen o quedan demasiado pequeños.
+
+5) text-align: center en mobile
+
+Por qué: cuando apilas cosas, centrar se ve más balanceado.
+Qué pasa si no: se ve “cargado” hacia la izquierda y raro en móvil.
+
+6) Cambiar .dropdown de absolute a static en móvil
+
+Por qué: en móvil el dropdown flotante “salta” y se siente incómodo; mejor que empuje normal hacia abajo dentro del panel.
+Qué pasa si no: se monta encima de otros elementos o se sale del panel.
+
+7) position: static para la imagen de phones en móvil
+
+Por qué: en móvil “flotar” con absolute suele romper el flujo; se vuelve más fácil dejarla normal y ajustar con márgenes.
+Qué pasa si no: se puede salir del contenedor o tapar texto.
+
+5) “¿Cuánto puedo añadir yo?”
+
+Puedes añadir todo lo que quieras, pero si no quieres volverte loco, usa esta regla:
+
+Solo cambia 3 cosas por breakpoint:
+
+Layout: 2 columnas → 1 columna (grid/flex direction)
+
+Espacios: padding/gap/margins más pequeños
+
+Efectos: quitar transforms y absolute cuando estorben
+
+Si empiezas a tocar 20 propiedades por sección, te confundes.
+
+6) La referencia que te falta (esto te salva)
+
+Cuando estés haciendo responsive, pregúntate:
+
+✅ “¿Esto es estructura o es decoración?”
+
+Estructura: grid/flex/orden → se cambia en mobile
+
+Decoración: sombras, colores → casi nunca se cambia
+
+✅ “¿Esto está hecho para desktop?”
+
+si es un translate(120px, -60px) casi siempre en mobile se quita.
+
+✅ “¿Se está saliendo la página a los lados?”
+
+si sí: hay un width > 100%, translate, absolute, o algo grande.

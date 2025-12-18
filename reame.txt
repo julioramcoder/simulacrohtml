@@ -1,0 +1,114 @@
+# Blogr Landing Page
+
+Landing page responsive basada en el diseño “Blogr”, desarrollada con HTML y CSS puro. El proyecto presenta una navegación moderna con menús desplegables, un layout adaptable y una estructura clara tanto a nivel visual como de código.
+
+---
+
+## Descripción del proyecto
+
+Este proyecto consiste en la maquetación de una landing page corporativa para una plataforma de blogging ficticia llamada **Blogr**.  
+El objetivo fue replicar un diseño moderno priorizando la experiencia de usuario, la legibilidad del contenido y una correcta adaptación a distintos tamaños de pantalla.
+
+El sitio no utiliza frameworks ni JavaScript; todo el comportamiento visual y responsive se logra mediante **HTML semántico y CSS moderno**.
+
+---
+
+## Flujo general del código
+
+### Estructura HTML
+1. **`<header>`**
+   - Contiene la navegación principal y el hero.
+   - Incluye el logo, los menús desplegables y los botones de acción.
+2. **`<main>`**
+   - Agrupa las tres secciones principales de contenido.
+   - Cada sección está aislada en su propio bloque (`section`) para facilitar estilos y mantenimiento.
+3. **`<footer>`**
+   - Contiene enlaces secundarios organizados por categorías.
+
+### Relación HTML ↔ CSS
+- Cada sección del HTML tiene una clase principal (`.header`, `.cuerpo`, `.body2`, `.body3`, `.footer`).
+- El CSS está organizado siguiendo ese mismo orden, lo que permite localizar rápidamente los estilos de cada parte.
+- Las variables definidas en `:root` centralizan colores, radios y anchos máximos, asegurando consistencia visual en todo el sitio.
+- El diseño responsive se controla desde la parte final del archivo CSS mediante media queries.
+
+---
+
+## Uso de la página
+
+### Navegación (Desktop)
+- En la parte superior se encuentra la barra de navegación.
+- Las opciones **Product**, **Company** y **Connect** despliegan submenús al hacer clic.
+- Los submenús muestran enlaces relacionados con cada categoría.
+- Los botones **Login** y **Sign Up** están alineados a la derecha.
+
+### Navegación (Mobile)
+- En pantallas pequeñas aparece un **menú hamburguesa**.
+- Al tocar el icono, se abre un panel desplegable con todas las opciones.
+- El menú puede cerrarse tocando fuera del panel o desmarcando el botón.
+- Los submenús se muestran en formato vertical para facilitar la navegación táctil.
+
+### Secciones principales
+- **Hero:** mensaje principal del producto con dos llamadas a la acción (*Start for Free* y *Learn More*).
+- **Designed for the future:** descripción de las principales características del editor.
+- **State of the Art Infrastructure:** sección destacada a pantalla completa con imagen y fondo degradado.
+- **Sección final:** información adicional sobre herramientas y ventajas del producto.
+- **Footer:** enlaces organizados por categorías.
+
+---
+
+## Decisiones técnicas relevantes
+
+### Navegación
+- Uso de `<details>` y `<summary>` para dropdowns accesibles y funcionales con teclado.
+- Control del menú mobile mediante un `checkbox` para evitar JavaScript.
+- Overlay invisible para cerrar el menú tocando fuera de él.
+
+### Layout y responsive
+- Uso combinado de **CSS Grid** y **Flexbox**.
+- Reordenamiento de contenido en mobile para priorizar lectura.
+- Imágenes decorativas posicionadas con `transform` en desktop y normalizadas en mobile.
+
+### Tipografía y legibilidad
+- Uso de unidades relativas (`rem`, `ch`, `clamp`).
+- Limitación del ancho de texto para mejorar la lectura.
+- Separación clara entre títulos y párrafos mediante márgenes y `line-height`.
+
+### Organización del CSS
+- Variables globales en `:root`.
+- Estilos agrupados por secciones.
+- Media queries al final del archivo para un control claro del responsive.
+
+---
+
+## Tecnologías utilizadas
+
+- HTML5
+- CSS3 (Grid, Flexbox, variables CSS)
+- Sin JavaScript
+- Sin frameworks externos
+
+---
+
+## URLs
+
+- **Repositorio:** https://github.com/USUARIO/REPO  
+- **Sitio desplegado:** https://TU-SITIO-DEPLOY.com  
+
+---
+
+## Checklist de validación
+
+- [ ] Visualización correcta en desktop
+- [ ] Visualización correcta en tablet
+- [ ] Visualización correcta en mobile
+- [ ] Navegación usable con teclado
+- [ ] Menús desplegables funcionales
+- [ ] Estados hover y focus correctamente implementados
+- [ ] Sitio desplegado accesible y funcional
+
+---
+
+## Estado del proyecto
+
+Proyecto finalizado y listo para evaluación.  
+El código está organizado, comentado y preparado para futuras mejoras o escalabilidad.
