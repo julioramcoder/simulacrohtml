@@ -355,26 +355,26 @@ Si el base es 16px, 2.6rem ≈ 41.6px.*/
   }
 
   /* overlay (cerrar tocando fuera) */
-  .nav-toggle:checked ~ .overlay{
+  .nav-toggle:checked ~ .overlay{ /*cuando tocamos el boton hamburguesa se marca un checkbox al mismo tiempo pasan 2 cosas se abre el menu y se crea un espacio invisible llaamdo overlay, cuando se toca ese espacio que esta al rededor del botkn hamburgessa se cierra el menu*/
     display:block;
     position: fixed;
     inset: 0;
     background: transparent;
-    z-index: 5;
+    z-index: 5; 
   }
 
   /* panel blanco */
-  .nav-toggle:checked ~ .nav_panel{
-    display:block;
-    position:absolute;
-    top: 90px;
+  .nav-toggle:checked ~ .nav_panel{  /*cuando el boton invisible checkbox este prendido muestra ek menu*/
+    display:block; /*aqui ya se muestra elm menu emergente antes etsab oculto*/
+    position:absolute; /*aaprece flotando*/
+    top: 90px; 
     left: 18px;
     right: 18px;
     background:#fff;
     color: var(--gray-900);
     border-radius:14px;
     padding:18px;
-    z-index: 10;
+    z-index: 10; /*entre mas grande el numero mas arriba se mostrara la iamgen*/
     box-shadow: 0 20px 50px rgba(0,0,0,.25);
   }
 
@@ -385,7 +385,7 @@ Si el base es 16px, 2.6rem ≈ 41.6px.*/
 
   /* dropdown sin absolute (para que NO salte) */
   .dropdown{
-    position: static;
+    position: static; /*ya no es absolute, regresa a la normalidad*/
     box-shadow: none;
     background: transparent;
     padding: 8px 0 14px;
